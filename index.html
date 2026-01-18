@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="/style.css">
+  <title>Event Planner Dashboard</title>
+</head>
+<body>
+  <header>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Agenda</a>
+        
+        <div class="form-check form-switch d-flex justify-content-end">
+          <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+          <label class="form-check-label ms-3" for="flexSwitchCheckDefault">Colormode</label>
+        </div>
+
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Dropdown
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li>
+          </ul>
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <section>
+    <div class="container d-flex ">
+      <!-- PRIMA SINISTRA -->
+      <div class="col-6 flex-column border border">
+        <form class="container">
+          <!--TITLE  -->
+          <div class="mb-3"> 
+            <label for="titleEvent" class="form-label">Titolo Evento</label>
+            <input type="email" class="form-control" id="titleEvent" aria-describedby="emailHelp">
+          </div>
+          <!-- DATA -->
+          <div class="flex-row row mb-2">
+              <div class="col-3">
+                <label for="daySelector" class="form-label">Giorno</label>
+                <select id="daySelector" class="form-select col-2" aria-label="Default select example">
+                  <option selected></option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                  <option value="13">13</option>
+                  <option value="14">14</option>
+                  <option value="15">15</option>
+                  <option value="16">16</option>
+                  <option value="17">17</option>
+                  <option value="18">18</option>
+                  <option value="19">19</option>
+                  <option value="20">20</option>
+                  <option value="21">21</option>
+                  <option value="22">22</option>
+                  <option value="23">23</option>
+                  <option value="24">24</option>
+                  <option value="25">25</option>
+                  <option value="26">26</option>
+                  <option value="27">27</option>
+                  <option value="28">28</option>
+                  <option value="29">29</option>
+                  <option value="30">30</option>
+                  <option value="31">31</option>
+                </select>
+              </div>
+
+              <div class="col-5">
+                <label for="monthSelector" class="form-label">Mese</label>
+                <select id="monthSelector" class="form-select" aria-label="Default select example">
+                  <option selected></option>
+                  <option value="1">Gennaio</option>
+                  <option value="2">Febbraio</option>
+                  <option value="3">Marzo</option>
+                  <option value="4">Aprile</option>
+                  <option value="5">Maggio</option>
+                  <option value="6">Giusgno</option>
+                  <option value="7">Luglio</option>
+                  <option value="8">Agosto</option>
+                  <option value="9">Settembre</option>
+                  <option value="10">Ottobre</option>
+                  <option value="11">Novembre</option>
+                  <option value="12">Dicembre</option>
+                </select>
+              </div>
+              
+              <div class="col-4">
+                <label for="yearSelector" class="form-label">Anno</label>
+                <select id="yearSelector" class="form-select" aria-label="Default select example">
+                  <option selected></option>
+                  <option value="2025">2025</option>
+                  <option value="2026">2026</option>
+                  <option value="2027">2027</option>
+                </select>
+              </div>
+            </div>
+          <!-- ORARIO -->
+          <div class="mb-3 row">
+            <div class="col-5">
+                <label for="hourSelector" class="form-label">Ora</label>
+                <select id="hourSelector" class="form-select" aria-label="Default select example">
+                      <option selected></option>
+                      <option value="00">00</option>
+                      <option value="01">01</option>
+                      <option value="02">02</option>
+                      <option value="03">03</option>
+                      <option value="04">04</option>
+                      <option value="05">05</option>
+                      <option value="06">06</option>
+                      <option value="07">07</option>
+                      <option value="08">08</option>
+                      <option value="09">09</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+                      <option value="13">13</option>
+                      <option value="14">14</option>
+                      <option value="15">15</option>
+                      <option value="16">16</option>
+                      <option value="17">17</option>
+                      <option value="18">18</option>
+                      <option value="19">19</option>
+                      <option value="20">20</option>
+                      <option value="21">21</option>
+                      <option value="22">22</option>
+                      <option value="23">23</option>
+                </select>
+              </div>
+    
+              <div class="col-5">
+                <label for="minuteSelector" class="form-label">Minuti</label>
+                <select id="minuteSelector" class="form-select" aria-label="Default select example">
+                    <option selected></option>
+                    <option value="00">00</option>
+                    <option value="05">05</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                    <option value="25">25</option>
+                    <option value="30">30</option>
+                    <option value="35">35</option>
+                    <option value="40">40</option>
+                    <option value="45">45</option>
+                    <option value="50">50</option>
+                    <option value="55">55</option>
+                </select>
+              </div>
+          </div>
+          <div class="mb-3 row justify-content-around">
+            <button id="submitButton" type="submit" class="btn btn-secondary col-3">Crea</button>
+            <button id="resetButton" type="reset" class="btn btn-secondary col-3">Reset</button>
+          </div>
+        </form>
+      </div>
+      <!--COLONNA DESTRA -->
+      <div class="col-6 flex-column border">
+        <h3 class="text-center">Prossimi eventi </h3>
+
+
+        <div id="eventList">
+          <div class="card" >
+            <div class="card-body">
+              <h5 id="cardEventTitle" class="card-title">Dentista</h5>
+              <p id="cardEventdate" class="card-text">15-Marzo-2025</p>
+              <p id="cardEventhour" class="card-text">16:30</p>
+            </div>
+          </div>
+        </div>
+
+        
+      </div>
+      </div>
+ 
+  </section>
+    
+
+  
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script src="/script.js"></script>
+</body>
+</html>
