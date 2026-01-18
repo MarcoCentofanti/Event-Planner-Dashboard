@@ -37,7 +37,7 @@ darkModeButton.addEventListener("click", (e => {
 
   cardAll.classList.toggle("text-white")
   cardAll.classList.toggle("bg-dark")
-  
+
   cardExample.classList.toggle("text-white")
   cardExample.classList.toggle("bg-dark")
   
@@ -127,7 +127,52 @@ submitButton.addEventListener("click", (e) => {
 
 
 
-resetButton.addEventListener("click", (e) => {
-  e.preventDefault()
+resetButton.addEventListener("reset", (e) => {
+  // e.preventDefault()
   // console.log("TEST-reset")
+})
+
+
+// FILTER FUNCTIONALITY
+
+const filterButton = document.getElementById("filterButton")
+const titleFilter = document.getElementById("titleFilter")
+
+
+const dayFilter = document.getElementById("dayFilter")
+const monthFilter = document.getElementById("monthFilter")
+const yearFilter = document.getElementById("yearFilter")
+
+const hourFilter = document.getElementById("hourFilter")
+const minuteFilter = document.getElementById("minuteFilter")
+
+filterButton.addEventListener("click", (e) => {
+  e.preventDefault()
+  // console.log("TEST-filter")
+
+  if ( dayFilter.value !== ""){
+    const eventsDayFiltred = agendaArray.filter(element => element.day === dayFilter.value)
+    console.log(eventsDayFiltred)
+     eventList.textContent = ""
+
+  eventsDayFiltred.forEach(element => {
+    const newCard = document.createElement("div")
+    newCard.classList.add("card")
+    newCard.classList.add("cardAdded")
+    if (darkModeButton.textContent === "Light Mode") {
+        newCard.classList.add("bg-dark")
+        newCard.classList.add("text-white")
+    }
+        newCard.innerHTML =
+        `<div class="card-body">
+        <h5 id="cardEventTitle" class="card-title">${element.title}</h5>
+        <p id="cardEventdate" class="card-text">Data: ${element.day}-${element.month}-${element.year}</p>
+        <p id="cardEventhour" class="card-text">Ora: ${element.hour}:${element.minutes}</p>
+        <p id="cardNote" class="card-text">Note: ${element.note}</p>
+        </div>`
+        
+        eventList.append(newCard)
+      })
+  }
+
 })

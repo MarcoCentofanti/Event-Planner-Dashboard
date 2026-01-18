@@ -60,7 +60,8 @@
     <div class="container d-flex ">
       <!-- PRIMA SINISTRA -->
       <div class="col-6 flex-column border border">
-        <form class="container">
+        <!-- FORM AGGIUNTA EVENTO -->
+        <form id="formAdd" class="container">
           <!--TITLE  -->
           <div class="mb-3"> 
             <label for="titleEvent" class="form-label">Titolo Evento</label>
@@ -199,7 +200,150 @@
             <button id="resetButton" type="reset" class="formButton btn btn-secondary col-3">Reset</button>
           </div>
         </form>
+
+        <!-- FILTRO -->
+        <h3 class="text-center">Filtro</h3>
+       <form id="formFilter" class="container">
+        
+          <!--TITLE FILTRO  -->
+          <!--  
+            <div class="mb-3"> 
+              <label for="titleFilter" class="form-label">Filtra per titolo</label>
+              <input type="email" class="form-control" id="titleFilter" aria-describedby="emailHelp">
+            </div>
+            -->
+          <!-- DATA FILTRO -->
+          <div class="flex-row row mb-2">
+            <p>Filtra per Data</p>
+              <div class="col-3">
+                <label for="dayFilter" class="form-label">Giorno</label>
+                <select id="dayFilter" class="form-select col-2" aria-label="Default select example">
+                  <option selected></option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                  <option value="13">13</option>
+                  <option value="14">14</option>
+                  <option value="15">15</option>
+                  <option value="16">16</option>
+                  <option value="17">17</option>
+                  <option value="18">18</option>
+                  <option value="19">19</option>
+                  <option value="20">20</option>
+                  <option value="21">21</option>
+                  <option value="22">22</option>
+                  <option value="23">23</option>
+                  <option value="24">24</option>
+                  <option value="25">25</option>
+                  <option value="26">26</option>
+                  <option value="27">27</option>
+                  <option value="28">28</option>
+                  <option value="29">29</option>
+                  <option value="30">30</option>
+                  <option value="31">31</option>
+                </select>
+              </div>
+
+              <div class="col-5">
+                <label for="monthFilter" class="form-label">Mese</label>
+                <select id="monthFilter" class="form-select" aria-label="Default select example">
+                  <option selected></option>
+                  <option value="1">Gennaio</option>
+                  <option value="2">Febbraio</option>
+                  <option value="3">Marzo</option>
+                  <option value="4">Aprile</option>
+                  <option value="5">Maggio</option>
+                  <option value="6">Giusgno</option>
+                  <option value="7">Luglio</option>
+                  <option value="8">Agosto</option>
+                  <option value="9">Settembre</option>
+                  <option value="10">Ottobre</option>
+                  <option value="11">Novembre</option>
+                  <option value="12">Dicembre</option>
+                </select>
+              </div>
+              
+              <div class="col-4">
+                <label for="yearFilter" class="form-label">Anno</label>
+                <select id="yearFilter" class="form-select" aria-label="Default select example">
+                  <option selected></option>
+                  <option value="2025">2025</option>
+                  <option value="2026">2026</option>
+                  <option value="2027">2027</option>
+                </select>
+              </div>
+            </div>
+          <!-- ORARIO FILTRO -->
+          <div class="mb-3 row">
+            <div class="col-5">
+                <label for="hourFilter" class="form-label">Ora</label>
+                <select id="hourFilter" class="form-select" aria-label="Default select example">
+                      <option selected></option>
+                      <option value="00">00</option>
+                      <option value="01">01</option>
+                      <option value="02">02</option>
+                      <option value="03">03</option>
+                      <option value="04">04</option>
+                      <option value="05">05</option>
+                      <option value="06">06</option>
+                      <option value="07">07</option>
+                      <option value="08">08</option>
+                      <option value="09">09</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+                      <option value="13">13</option>
+                      <option value="14">14</option>
+                      <option value="15">15</option>
+                      <option value="16">16</option>
+                      <option value="17">17</option>
+                      <option value="18">18</option>
+                      <option value="19">19</option>
+                      <option value="20">20</option>
+                      <option value="21">21</option>
+                      <option value="22">22</option>
+                      <option value="23">23</option>
+                </select>
+              </div>
+    
+              <div class="col-5">
+                <label for="minuteFilter" class="form-label">Minuti</label>
+                <select id="minuteFilter" class="form-select" aria-label="Default select example">
+                    <option selected></option>
+                    <option value="00">00</option>
+                    <option value="05">05</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                    <option value="25">25</option>
+                    <option value="30">30</option>
+                    <option value="35">35</option>
+                    <option value="40">40</option>
+                    <option value="45">45</option>
+                    <option value="50">50</option>
+                    <option value="55">55</option>
+                </select>
+              </div>
+          </div>
+          
+          <!-- BUTTONS FILTRO -->
+          <div class="mb-3 row justify-content-around">
+            <button id="filterButton" type="button" class="formButton btn btn-secondary col-3">Filtra</button>
+            <button id="resetorAllButton" type="button" class="formButton btn btn-secondary col-3">Mostra Tutti</button>
+          </div>
+        </form> 
       </div>
+
+      <!-- fino a qui -->
       <!--COLONNA DESTRA -->
       <div class="col-6 flex-column border">
         <h3 class="text-center">Prossimi eventi </h3>
