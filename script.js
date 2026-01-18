@@ -148,11 +148,16 @@ const minuteFilter = document.getElementById("minuteFilter")
 
 let eventsDayFiltred
 let eventsMonthFiltred
+let eventsYearFiltred
+let eventsHourFiltred
+let eventsMinutesFiltred
 
 filterButton.addEventListener("click", (e) => {
   e.preventDefault()
   // console.log("TEST-filter")
 
+// FILTRAGGIO
+  // DAY
   if ( dayFilter.value !== ""){
     eventsDayFiltred = agendaArray.filter(element => element.day === dayFilter.value)
     console.log(eventsDayFiltred)
@@ -179,8 +184,8 @@ filterButton.addEventListener("click", (e) => {
   } else {
     eventsDayFiltred = [...agendaArray]
     console.log(eventsDayFiltred)
-
   }
+  // MONTH
     if ( monthFilter.value !== ""){
     eventsMonthFiltred = eventsDayFiltred.filter(element => element.month === monthFilter.value)
      
@@ -205,9 +210,35 @@ filterButton.addEventListener("click", (e) => {
         eventList.append(newCard)
       })
   } else {
-        eventsMonthFiltred = {...eventsDayFiltred}
+        eventsMonthFiltred = [...eventsDayFiltred]
         console.log(eventsMonthFiltred)
-
   }
+// YEAR
+    if ( yearFilter.value !== ""){
+    eventsYearFiltred = eventsMonthFiltred.filter(element => element.year === yearFilter.value)
+     
+    eventList.textContent = ""
 
+  eventsYearFiltred.forEach(element => {
+    const newCard = document.createElement("div")
+    newCard.classList.add("card")
+    newCard.classList.add("cardAdded")
+    if (darkModeButton.textContent === "Light Mode") {
+        newCard.classList.add("bg-dark")
+        newCard.classList.add("text-white")
+    }
+        newCard.innerHTML =
+        `<div class="card-body">
+        <h5 id="cardEventTitle" class="card-title">${element.title}</h5>
+        <p id="cardEventdate" class="card-text">Data: ${element.day}-${element.month}-${element.year}</p>
+        <p id="cardEventhour" class="card-text">Ora: ${element.hour}:${element.minutes}</p>
+        <p id="cardNote" class="card-text">Note: ${element.note}</p>
+        </div>`
+        
+        eventList.append(newCard)
+      })
+  } else {
+        eventsYearFiltred = [...eventsMonthFiltred]
+        console.log(eventsYearFiltred)
+  }
 })
