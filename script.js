@@ -9,6 +9,7 @@ const cardAll = document.getElementById("eventList")
 const selectAll = document.querySelectorAll("select")
 const formButton = document.querySelectorAll("button.formButton")
 const textareaNote = document.getElementById("textareaNote")
+const cardExample = document.getElementById("cardExample")
 
 darkModeButton.addEventListener("click", (e => {
   if (darkModeButton.textContent === "Dark Mode") {
@@ -36,6 +37,10 @@ darkModeButton.addEventListener("click", (e => {
 
   cardAll.classList.toggle("text-white")
   cardAll.classList.toggle("bg-dark")
+  
+  cardExample.classList.toggle("text-white")
+  cardExample.classList.toggle("bg-dark")
+  
   
   textareaNote.classList.toggle("text-white")
   textareaNote.classList.toggle("bg-dark")
