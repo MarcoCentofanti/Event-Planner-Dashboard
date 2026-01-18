@@ -17,6 +17,12 @@ darkModeButton.addEventListener("click", (e => {
     darkModeButton.textContent = "Dark Mode"
   }
   const cardBody = document.querySelectorAll("div.card-body")
+  const cardAdded = document.querySelectorAll("div.cardAdded")
+  cardAdded.forEach(element => {
+    element.classList.toggle("bg-dark")
+    element.classList.toggle("bg-light")  
+    element.classList.toggle("text-white")  
+  });
 
   bodyElement.classList.toggle("bg-dark")
   navbarElement.classList.toggle("bg-light")  
@@ -38,10 +44,6 @@ darkModeButton.addEventListener("click", (e => {
     element.classList.toggle("text-white")
   }); 
   
-  cardBody.forEach(element => {
-    element.classList.toggle("text-white")
-    element.classList.toggle("bg-dark")
-  }); 
 
   selectAll.forEach(element => {
     element.classList.toggle("text-white")
@@ -83,31 +85,40 @@ submitButton.addEventListener("click", (e) => {
   newEvent.day = dayInput.value
   newEvent.month = monthInput.value
   newEvent.year = yearInput.value
-  newEvent.note = textareaNote.value
-
   newEvent.hour = hourInput.value
   newEvent.minutes = minuteInput.value
+  newEvent.note = textareaNote.value
 
   agendaArray.push(newEvent)
-  console.log(newEvent)
-  console.log(agendaArray)
+
+
 
   eventList.textContent = ""
+
   agendaArray.forEach(element => {
     const newCard = document.createElement("div")
-    newCard.innerHTML =`<div class="card" >
-            <div class="card-body">
-              <h5 id="cardEventTitle" class="card-title">${element.title}</h5>
-              <p id="cardEventdate" class="card-text">Data: ${element.day}-${element.month}-${element.year}</p>
-              <p id="cardEventhour" class="card-text">Ora: ${element.hour}:${element.minutes}</p>
-               <p id="cardNote" class="card-text">Note: ${element.note}</p>
-            </div>
-          </div>`
-    eventList.append(newCard)
-  });
+    newCard.classList.add("card")
+    newCard.classList.add("cardAdded")
+    if (darkModeButton.textContent === "Light Mode") {
+        newCard.classList.add("bg-dark")
+        newCard.classList.add("text-white")
+    }
+        newCard.innerHTML =
+        `<div class="card-body">
+        <h5 id="cardEventTitle" class="card-title">${element.title}</h5>
+        <p id="cardEventdate" class="card-text">Data: ${element.day}-${element.month}-${element.year}</p>
+        <p id="cardEventhour" class="card-text">Ora: ${element.hour}:${element.minutes}</p>
+        <p id="cardNote" class="card-text">Note: ${element.note}</p>
+        </div>`
+        
+        eventList.append(newCard)
+      })
+      console.log("aggiunto")
 
+  })
 
-})
+  
+
 
 
 
