@@ -8,6 +8,7 @@ const textAll = document.querySelectorAll("label, p, h1, h2, h3, h4, h5")
 const cardAll = document.getElementById("eventList")
 const selectAll = document.querySelectorAll("select")
 const formButton = document.querySelectorAll("button.formButton")
+const textareaNote = document.getElementById("textareaNote")
 
 darkModeButton.addEventListener("click", (e => {
   if (darkModeButton.textContent === "Dark Mode") {
@@ -16,6 +17,7 @@ darkModeButton.addEventListener("click", (e => {
     darkModeButton.textContent = "Dark Mode"
   }
   const cardBody = document.querySelectorAll("div.card-body")
+
   bodyElement.classList.toggle("bg-dark")
   navbarElement.classList.toggle("bg-light")  
   navbarElement.classList.toggle("bg-dark")
@@ -28,6 +30,9 @@ darkModeButton.addEventListener("click", (e => {
 
   cardAll.classList.toggle("text-white")
   cardAll.classList.toggle("bg-dark")
+  
+  textareaNote.classList.toggle("text-white")
+  textareaNote.classList.toggle("bg-dark")
   
   textAll.forEach(element => {
     element.classList.toggle("text-white")
@@ -66,6 +71,7 @@ const yearInput = document.getElementById("yearSelector")
 
 const hourInput = document.getElementById("hourSelector")
 const minuteInput = document.getElementById("minuteSelector")
+const noteTextArea = document.getElementById("noteTextArea")
 
 const eventList = document.getElementById("eventList")
 
@@ -77,6 +83,7 @@ submitButton.addEventListener("click", (e) => {
   newEvent.day = dayInput.value
   newEvent.month = monthInput.value
   newEvent.year = yearInput.value
+  newEvent.note = textareaNote.value
 
   newEvent.hour = hourInput.value
   newEvent.minutes = minuteInput.value
@@ -91,11 +98,11 @@ submitButton.addEventListener("click", (e) => {
     newCard.innerHTML =`<div class="card" >
             <div class="card-body">
               <h5 id="cardEventTitle" class="card-title">${element.title}</h5>
-              <p id="cardEventdate" class="card-text">${element.day}-${element.month}-${element.year}</p>
-              <p id="cardEventhour" class="card-text">${element.hour}:${element.minutes}</p>
+              <p id="cardEventdate" class="card-text">Data: ${element.day}-${element.month}-${element.year}</p>
+              <p id="cardEventhour" class="card-text">Ora: ${element.hour}:${element.minutes}</p>
+               <p id="cardNote" class="card-text">Note: ${element.note}</p>
             </div>
-          </div>
-        </div>`
+          </div>`
     eventList.append(newCard)
   });
 
