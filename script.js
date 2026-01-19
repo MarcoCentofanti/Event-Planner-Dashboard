@@ -34,6 +34,8 @@ darkModeButton.addEventListener("click", (e => {
   darkModeButton.classList.toggle("btn-light")
   titleEvent.classList.toggle("bg-dark")
   titleEvent.classList.toggle("text-white")
+  titleFilter.classList.toggle("bg-dark")
+  titleFilter.classList.toggle("text-white")
 
   cardAll.classList.toggle("text-white")
   cardAll.classList.toggle("bg-dark")
