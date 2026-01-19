@@ -1,6 +1,5 @@
+
 // FUNCIONS
-
-
 const cardRender = function (element){
     const newCard = document.createElement("div")
     newCard.classList.add("card")
@@ -24,65 +23,64 @@ const cardRender = function (element){
 
 
 // COLOR MODE
+
 const darkModeButton = document.getElementById("darkModeButton")
-
-
-const bodyElement = document.querySelector("body")
 const navbarElement = document.querySelector("nav")
 const textAll = document.querySelectorAll("label, p, h1, h2, h3, h4, h5")
-const cardAll = document.getElementById("eventList")
 const selectAll = document.querySelectorAll("select")
 const formButton = document.querySelectorAll("button.formButton")
 const textareaNote = document.getElementById("textareaNote")
-const cardExample = document.getElementById("cardExample")
 const ButtonModalAddTag = document.getElementById("ButtonModalAddTag")
-const modal = document.getElementById("exampleModal")
 const html = document.documentElement;
 darkModeButton.addEventListener("click", (e => {
   if (darkModeButton.textContent === "Dark Mode") {
     darkModeButton.textContent = "Light Mode"
-} else {
-  darkModeButton.textContent = "Dark Mode"
+  } else {
+    darkModeButton.textContent = "Dark Mode"
   }
-
+  
   const current = html.getAttribute("data-bs-theme");
   html.setAttribute("data-bs-theme", current === "dark" ? "light" : "dark");
-  const cardBody = document.querySelectorAll("div.card-body")
   const cardAdded = document.querySelectorAll("div.cardAdded")
   cardAdded.forEach(element => {
     element.classList.toggle("bg-dark")
     element.classList.toggle("bg-light")  
     element.classList.toggle("text-white")  
   });
-
-  bodyElement.classList.toggle("bg-dark")
+  
   navbarElement.classList.toggle("bg-light")  
   navbarElement.classList.toggle("bg-dark")
   navbarElement.classList.toggle("navbar-light")
   navbarElement.classList.toggle("navbar-dark")
-  darkModeButton.classList.toggle("btn-dark")
-  darkModeButton.classList.toggle("btn-light")
+  textAll.forEach(element => {
+    element.classList.toggle("text-white")
+    darkModeButton.classList.toggle("btn-dark")
+    darkModeButton.classList.toggle("btn-light")
+    ButtonModalAddTag.classList.toggle("btn-dark")
+  }); 
+  
+  // Comportamenti sostituito da "data-bs-theme" righe 48-49
+  /*
+  const bodyElement = document.querySelector("body")
+  const cardAll = document.getElementById("eventList")
+  const cardExample = document.getElementById("cardExample")
+  const modal = document.getElementById("exampleModal")
+
+  bodyElement.classList.toggle("bg-dark")
   titleEvent.classList.toggle("bg-dark")
   titleEvent.classList.toggle("text-white")
   titleFilter.classList.toggle("bg-dark")
   titleFilter.classList.toggle("text-white")
-
   cardAll.classList.toggle("text-white")
   cardAll.classList.toggle("bg-dark")
-
   cardExample.classList.toggle("text-white")
   cardExample.classList.toggle("bg-dark")
-  
-  ButtonModalAddTag.classList.toggle("btn-dark")
-  // buttonAddTag.classList.toggle("bg-dark")
+  buttonAddTag.classList.toggle("bg-dark")
   modal.classList.toggle("text-black")
-  
   textareaNote.classList.toggle("text-white")
   textareaNote.classList.toggle("bg-dark")
-  
-  textAll.forEach(element => {
-    element.classList.toggle("text-white")
-  }); 
+
+  */
   
 
   selectAll.forEach(element => {
@@ -179,7 +177,6 @@ filterButton.addEventListener("click", (e) => {
   eventsTitleFiltred.forEach(element => cardRender(element))
   } else {
     eventsTitleFiltred = [...agendaArray]
-    // console.log(eventsDayFiltred)
   }
   // DAY
   if ( dayFilter.value !== ""){
@@ -190,7 +187,6 @@ filterButton.addEventListener("click", (e) => {
   eventsDayFiltred.forEach(element => cardRender(element))
   } else {
     eventsDayFiltred = [...eventsTitleFiltred]
-    // console.log(eventsDayFiltred)
   }
   // MONTH
     if ( monthFilter.value !== ""){
@@ -249,7 +245,6 @@ filterButton.addEventListener("click", (e) => {
   eventsMinutesFiltred.forEach(element => cardRender(element))
   } else {
         eventsMinutesFiltred = [...eventsHourFiltred]
-        // console.log(eventsYearFiltred)
     }
       // TAG
 if ( tagSelector.value !== ""){
@@ -295,6 +290,9 @@ if ( tagSelector.value !== ""){
 
 
   buttonAddTag.addEventListener("click", () => {
+    if(tagList.includes(titleTagAdded.value)) {
+      
+    }
     tagList.push(titleTagAdded.value)
     tagSelector.textContent = ""
     tagFilterSelector.textContent = ""
