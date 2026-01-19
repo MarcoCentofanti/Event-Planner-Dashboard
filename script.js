@@ -118,7 +118,7 @@ submitButton.addEventListener("click", (e) => {
         
         eventList.append(newCard)
       })
-      console.log("aggiunto")
+      // console.log("aggiunto")
 
   })
 
@@ -146,6 +146,7 @@ const yearFilter = document.getElementById("yearFilter")
 const hourFilter = document.getElementById("hourFilter")
 const minuteFilter = document.getElementById("minuteFilter")
 
+let eventsTitleFiltred
 let eventsDayFiltred
 let eventsMonthFiltred
 let eventsYearFiltred
@@ -157,9 +158,37 @@ filterButton.addEventListener("click", (e) => {
   // console.log("TEST-filter")
 
 // FILTRAGGIO
+  // TITLE
+  if ( titleFilter.value !== ""){
+    eventsTitleFiltred = agendaArray.filter(element => element.title.toLowerCase().includes(titleFilter.value.toLowerCase()))
+    console.log(eventsDayFiltred)
+     eventList.textContent = ""
+
+  eventsTitleFiltred.forEach(element => {
+    const newCard = document.createElement("div")
+    newCard.classList.add("card")
+    newCard.classList.add("cardAdded")
+    if (darkModeButton.textContent === "Light Mode") {
+        newCard.classList.add("bg-dark")
+        newCard.classList.add("text-white")
+    }
+        newCard.innerHTML =
+        `<div class="card-body">
+        <h5 id="cardEventTitle" class="card-title">${element.title}</h5>
+        <p id="cardEventdate" class="card-text">Data: ${element.day}-${element.month}-${element.year}</p>
+        <p id="cardEventhour" class="card-text">Ora: ${element.hour}:${element.minutes}</p>
+        <p id="cardNote" class="card-text">Note: ${element.note}</p>
+        </div>`
+        
+        eventList.append(newCard)
+      })
+  } else {
+    eventsTitleFiltred = [...agendaArray]
+    // console.log(eventsDayFiltred)
+  }
   // DAY
   if ( dayFilter.value !== ""){
-    eventsDayFiltred = agendaArray.filter(element => element.day === dayFilter.value)
+    eventsDayFiltred = eventsTitleFiltred.filter(element => element.day === dayFilter.value)
     console.log(eventsDayFiltred)
      eventList.textContent = ""
 
@@ -182,8 +211,8 @@ filterButton.addEventListener("click", (e) => {
         eventList.append(newCard)
       })
   } else {
-    eventsDayFiltred = [...agendaArray]
-    console.log(eventsDayFiltred)
+    eventsDayFiltred = [...eventsTitleFiltred]
+    // console.log(eventsDayFiltred)
   }
   // MONTH
     if ( monthFilter.value !== ""){
@@ -211,7 +240,7 @@ filterButton.addEventListener("click", (e) => {
       })
   } else {
         eventsMonthFiltred = [...eventsDayFiltred]
-        console.log(eventsMonthFiltred)
+        // console.log(eventsMonthFiltred)
   }
 // YEAR
     if ( yearFilter.value !== ""){
@@ -239,6 +268,63 @@ filterButton.addEventListener("click", (e) => {
       })
   } else {
         eventsYearFiltred = [...eventsMonthFiltred]
-        console.log(eventsYearFiltred)
+        // console.log(eventsYearFiltred)
   }
-})
+  // HOUR
+    if ( hourFilter.value !== ""){
+    eventsHourFiltred = eventsYearFiltred.filter(element => element.hour === hourFilter.value)
+     
+    eventList.textContent = ""
+
+  eventsHourFiltred.forEach(element => {
+    const newCard = document.createElement("div")
+    newCard.classList.add("card")
+    newCard.classList.add("cardAdded")
+    if (darkModeButton.textContent === "Light Mode") {
+        newCard.classList.add("bg-dark")
+        newCard.classList.add("text-white")
+    }
+        newCard.innerHTML =
+        `<div class="card-body">
+        <h5 id="cardEventTitle" class="card-title">${element.title}</h5>
+        <p id="cardEventdate" class="card-text">Data: ${element.day}-${element.month}-${element.year}</p>
+        <p id="cardEventhour" class="card-text">Ora: ${element.hour}:${element.minutes}</p>
+        <p id="cardNote" class="card-text">Note: ${element.note}</p>
+        </div>`
+        
+        eventList.append(newCard)
+        console.log(newCard)
+      })
+  } else {
+        eventsHourFiltred = [...eventsYearFiltred]
+        // console.log(eventsYearFiltred)
+      }
+      // MINUTE
+    if ( minuteFilter.value !== ""){
+    eventsMinutesFiltred = eventsHourFiltred.filter(element => element.minutes === minuteFilter.value)
+     
+    eventList.textContent = ""
+
+  eventsMinutesFiltred.forEach(element => {
+    const newCard = document.createElement("div")
+    newCard.classList.add("card")
+    newCard.classList.add("cardAdded")
+    if (darkModeButton.textContent === "Light Mode") {
+        newCard.classList.add("bg-dark")
+        newCard.classList.add("text-white")
+    }
+        newCard.innerHTML =
+        `<div class="card-body">
+        <h5 id="cardEventTitle" class="card-title">${element.title}</h5>
+        <p id="cardEventdate" class="card-text">Data: ${element.day}-${element.month}-${element.year}</p>
+        <p id="cardEventhour" class="card-text">Ora: ${element.hour}:${element.minutes}</p>
+        <p id="cardNote" class="card-text">Note: ${element.note}</p>
+        </div>`
+        
+        eventList.append(newCard)
+        console.log(newCard)
+      })
+  } else {
+        eventsMinutesFiltred = [...eventsHourFiltred]
+        // console.log(eventsYearFiltred)
+    }})
