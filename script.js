@@ -1,3 +1,6 @@
+// FUNCIONS
+
+
 const cardRender = function (element){
     const newCard = document.createElement("div")
     newCard.classList.add("card")
@@ -32,13 +35,18 @@ const selectAll = document.querySelectorAll("select")
 const formButton = document.querySelectorAll("button.formButton")
 const textareaNote = document.getElementById("textareaNote")
 const cardExample = document.getElementById("cardExample")
-
+const ButtonModalAddTag = document.getElementById("ButtonModalAddTag")
+const modal = document.getElementById("exampleModal")
+const html = document.documentElement;
 darkModeButton.addEventListener("click", (e => {
   if (darkModeButton.textContent === "Dark Mode") {
     darkModeButton.textContent = "Light Mode"
-  } else {
-    darkModeButton.textContent = "Dark Mode"
+} else {
+  darkModeButton.textContent = "Dark Mode"
   }
+
+  const current = html.getAttribute("data-bs-theme");
+  html.setAttribute("data-bs-theme", current === "dark" ? "light" : "dark");
   const cardBody = document.querySelectorAll("div.card-body")
   const cardAdded = document.querySelectorAll("div.cardAdded")
   cardAdded.forEach(element => {
@@ -65,6 +73,9 @@ darkModeButton.addEventListener("click", (e => {
   cardExample.classList.toggle("text-white")
   cardExample.classList.toggle("bg-dark")
   
+  ButtonModalAddTag.classList.toggle("btn-dark")
+  // buttonAddTag.classList.toggle("bg-dark")
+  modal.classList.toggle("text-black")
   
   textareaNote.classList.toggle("text-white")
   textareaNote.classList.toggle("bg-dark")
