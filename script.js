@@ -136,6 +136,7 @@ resetButton.addEventListener("reset", (e) => {
 // FILTER FUNCTIONALITY
 
 const filterButton = document.getElementById("filterButton")
+const resetorAllButton = document.getElementById("resetorAllButton")
 const titleFilter = document.getElementById("titleFilter")
 
 
@@ -328,3 +329,27 @@ filterButton.addEventListener("click", (e) => {
         eventsMinutesFiltred = [...eventsHourFiltred]
         // console.log(eventsYearFiltred)
     }})
+
+  resetorAllButton.addEventListener("click", (e) => {
+  eventList.textContent = ""
+
+  agendaArray.forEach(element => {
+    const newCard = document.createElement("div")
+    newCard.classList.add("card")
+    newCard.classList.add("cardAdded")
+    if (darkModeButton.textContent === "Light Mode") {
+        newCard.classList.add("bg-dark")
+        newCard.classList.add("text-white")
+    }
+        newCard.innerHTML =
+        `<div class="card-body">
+        <h5 id="cardEventTitle" class="card-title">${element.title}</h5>
+        <p id="cardEventdate" class="card-text">Data: ${element.day}-${element.month}-${element.year}</p>
+        <p id="cardEventhour" class="card-text">Ora: ${element.hour}:${element.minutes}</p>
+        <p id="cardNote" class="card-text">Note: ${element.note}</p>
+        </div>`
+        
+        eventList.append(newCard)
+      })
+
+  })
