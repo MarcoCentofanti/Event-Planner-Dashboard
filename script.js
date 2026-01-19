@@ -157,6 +157,7 @@ let eventsMonthFiltred
 let eventsYearFiltred
 let eventsHourFiltred
 let eventsMinutesFiltred
+let eventsTagFiltred
 
 filterButton.addEventListener("click", (e) => {
   e.preventDefault()
@@ -183,6 +184,7 @@ filterButton.addEventListener("click", (e) => {
         <p id="cardEventdate" class="card-text">Data: ${element.day}-${element.month}-${element.year}</p>
         <p id="cardEventhour" class="card-text">Ora: ${element.hour}:${element.minutes}</p>
         <p id="cardNote" class="card-text">Note: ${element.note}</p>
+        <p id="cardTag" class="card-text">Tag: ${element.tag}</p>
         </div>`
         
         eventList.append(newCard)
@@ -324,6 +326,7 @@ filterButton.addEventListener("click", (e) => {
         <p id="cardEventdate" class="card-text">Data: ${element.day}-${element.month}-${element.year}</p>
         <p id="cardEventhour" class="card-text">Ora: ${element.hour}:${element.minutes}</p>
         <p id="cardNote" class="card-text">Note: ${element.note}</p>
+        <p id="cardTag" class="card-text">Tag: ${element.tag}</p>
         </div>`
         
         eventList.append(newCard)
@@ -332,7 +335,38 @@ filterButton.addEventListener("click", (e) => {
   } else {
         eventsMinutesFiltred = [...eventsHourFiltred]
         // console.log(eventsYearFiltred)
-    }})
+    }
+      // TAG
+if ( tagSelector.value !== ""){
+    eventsTagFiltred = eventsMinutesFiltred.filter(element => element.tag === tagSelector.value)
+     
+    eventList.textContent = ""
+
+  eventsTagFiltred.forEach(element => {
+    const newCard = document.createElement("div")
+    newCard.classList.add("card")
+    newCard.classList.add("cardAdded")
+    if (darkModeButton.textContent === "Light Mode") {
+        newCard.classList.add("bg-dark")
+        newCard.classList.add("text-white")
+    }
+        newCard.innerHTML =
+        `<div class="card-body">
+        <h5 id="cardEventTitle" class="card-title">${element.title}</h5>
+        <p id="cardEventdate" class="card-text">Data: ${element.day}-${element.month}-${element.year}</p>
+        <p id="cardEventhour" class="card-text">Ora: ${element.hour}:${element.minutes}</p>
+        <p id="cardNote" class="card-text">Note: ${element.note}</p>
+        <p id="cardTag" class="card-text">Tag: ${element.tag}</p>
+        </div>`
+        
+        eventList.append(newCard)
+        console.log(newCard)
+      })
+  } else {
+        eventsTagFiltred = [...eventsMinutesFiltred]
+
+    }
+  })
 
   resetorAllButton.addEventListener("click", (e) => {
   eventList.textContent = ""
@@ -351,6 +385,7 @@ filterButton.addEventListener("click", (e) => {
         <p id="cardEventdate" class="card-text">Data: ${element.day}-${element.month}-${element.year}</p>
         <p id="cardEventhour" class="card-text">Ora: ${element.hour}:${element.minutes}</p>
         <p id="cardNote" class="card-text">Note: ${element.note}</p>
+        <p id="cardTag" class="card-text">Tag: ${element.tag}</p>
         </div>`
         
         eventList.append(newCard)
