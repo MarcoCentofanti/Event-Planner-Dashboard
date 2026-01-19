@@ -184,6 +184,43 @@
                 </select>
               </div>
           </div>
+          <div class="col-12">
+                <label for="tagSelector" class="form-label">Tag</label>
+                <div class="d-flex flex-row justify-content-between">
+                  <select id="tagSelector" class="form-select col-*">
+                    <option selected></option>
+                    
+                  </select>
+                  <!--  -->
+                  <!-- Button trigger modal -->
+                  <button type="button" class="btn btn-light btn-outline-secondary col-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  +Tag
+                  </button>
+
+                  <!-- Modal -->
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">Aggiungi un Tag</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <div class="mb-3"> 
+                            <label for="titleTagAdded" class="form-label">Titolo Evento</label>
+                            <input id="titleTagAdded" type="text" class="form-control" >
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                          <button id="buttonAddTag" type="button" class="btn btn-primary" data-bs-dismiss="modal">Aggiungi</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--  -->
+                </div>
+              </div>
           <!-- TEXT FORM -->
           <div class="mb-3">
             <label for="noteTextArea" class="form-label">Note</label>

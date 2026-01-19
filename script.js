@@ -95,6 +95,7 @@ submitButton.addEventListener("click", (e) => {
   newEvent.hour = hourInput.value
   newEvent.minutes = minuteInput.value
   newEvent.note = textareaNote.value
+  newEvent.tag = tagSelector.value
 
   agendaArray.push(newEvent)
 
@@ -116,6 +117,7 @@ submitButton.addEventListener("click", (e) => {
         <p id="cardEventdate" class="card-text">Data: ${element.day}-${element.month}-${element.year}</p>
         <p id="cardEventhour" class="card-text">Ora: ${element.hour}:${element.minutes}</p>
         <p id="cardNote" class="card-text">Note: ${element.note}</p>
+        <p id="cardTag" class="card-text">Tag: ${element.tag}</p>
         </div>`
         
         eventList.append(newCard)
@@ -355,3 +357,34 @@ filterButton.addEventListener("click", (e) => {
       })
 
   })
+
+  // TAG FUNCIONALITY
+  const tagList = ["Casa", "Salute", "Lavoro"]
+
+
+
+  const buttonAddTag = document.getElementById("buttonAddTag")
+  const titleTagAdded = document.getElementById("titleTagAdded")
+
+  buttonAddTag.addEventListener("click", () => {
+    tagList.push(titleTagAdded.value)
+    tagSelector.textContent = ""
+    tagSelector.innerHTML = "<option selected></option>"
+    tagList.forEach(element => {
+    const newOption = document.createElement("option")
+    newOption.setAttribute("value", element)
+    newOption.textContent = element
+    tagSelector.append(newOption)
+  });
+  })
+
+
+
+  const tagSelector = document.getElementById("tagSelector")
+
+  tagList.forEach(element => {
+    const newOption = document.createElement("option")
+    newOption.setAttribute("value", element)
+    newOption.textContent = element
+    tagSelector.append(newOption)
+  });
