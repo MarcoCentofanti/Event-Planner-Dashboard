@@ -365,26 +365,43 @@ filterButton.addEventListener("click", (e) => {
 
   const buttonAddTag = document.getElementById("buttonAddTag")
   const titleTagAdded = document.getElementById("titleTagAdded")
-
-  buttonAddTag.addEventListener("click", () => {
-    tagList.push(titleTagAdded.value)
-    tagSelector.textContent = ""
-    tagSelector.innerHTML = "<option selected></option>"
-    tagList.forEach(element => {
-    const newOption = document.createElement("option")
-    newOption.setAttribute("value", element)
-    newOption.textContent = element
-    tagSelector.append(newOption)
-  });
-  })
-
-
-
+  
+  const tagFilterSelector = document.getElementById("tagFilterSelector")
   const tagSelector = document.getElementById("tagSelector")
 
   tagList.forEach(element => {
     const newOption = document.createElement("option")
     newOption.setAttribute("value", element)
     newOption.textContent = element
+    
+    const newOptionFilter = document.createElement("option")
+    newOptionFilter.setAttribute("value", element)
+    newOptionFilter.textContent = element
+
     tagSelector.append(newOption)
+    tagFilterSelector.append(newOptionFilter)
+
   });
+
+
+  buttonAddTag.addEventListener("click", () => {
+    tagList.push(titleTagAdded.value)
+    tagSelector.textContent = ""
+    tagFilterSelector.textContent = ""
+
+    tagSelector.innerHTML = "<option selected></option>"
+    tagFilterSelector.innerHTML = "<option selected></option>"
+
+    tagList.forEach(element => {
+    const newOption = document.createElement("option")
+    newOption.setAttribute("value", element)
+    newOption.textContent = element
+    
+    const newOptionFilter = document.createElement("option")
+    newOptionFilter.setAttribute("value", element)
+    newOptionFilter.textContent = element
+
+    tagSelector.append(newOption)
+    tagFilterSelector.append(newOptionFilter)
+  });
+  })
